@@ -167,7 +167,7 @@ class MemberDataTool(BaseTool):
             if u.getUserName().lower().find(s) != -1 \
                 or member.getProperty('fullname').lower().find(s) != -1 \
                 or member.getProperty('email').lower().find(s) != -1:
-                    res.append(member)
+                res.append(member)
         return res
 
     #### check to see if we can add users. Need to be careful here
@@ -201,7 +201,8 @@ class MemberDataTool(BaseTool):
             if self.canAddMemberData():
                 # XXX do not write on read
                 members[id] = md
-            return md.__of__(self).__of__(u)
+            return MemberData(base, id).__of__(self).__of__(u)
+            #return md.__of__(self).__of__(u)
         else:
             # Return a wrapper with self as containment and
             # the user as context.
