@@ -167,7 +167,7 @@ class MemberDataTool(BaseTool):
             if u.getUserName().lower().find(s) != -1 \
                 or member.getProperty('fullname').lower().find(s) != -1 \
                 or member.getProperty('email').lower().find(s) != -1:
-                    res.append(member)
+                res.append(member)
         return res
 
     #### an exact copy from the base, so that we pick up the new MemberData.
@@ -183,7 +183,8 @@ class MemberDataTool(BaseTool):
         members = self._members
         if not id in members:
             base = aq_base(self)
-            members[id] = MemberData(base, id)
+            #members[id] = MemberData(base, id)
+            return MemberData(base, id).__of__(self).__of__(u)
         # Return a wrapper with self as containment and
         # the user as context.
         return members[id].__of__(self).__of__(u)
