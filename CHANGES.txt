@@ -4,7 +4,7 @@ Changelog
 4.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- update to prevent writing MemberDate to datastore
 
 
 4.1.4 (2014-09-07)
